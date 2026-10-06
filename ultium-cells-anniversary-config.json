@@ -1,0 +1,68 @@
+{
+  "customer": "Ultium Cells",
+  "widgetType": "Custom (Anniversary Recognition)",
+  "title": "Happy Anniversary!",
+  "branding": {
+    "logos": [
+      {
+        "name": "Ultium Cells stacked logo",
+        "source": "UltiumCells_StackedLogo.jpg (JPEG, white background removed)",
+        "mimeType": "image/webp",
+        "variants": "Full color in light mode; rendered white via CSS filter in dark mode and on the anniversary banner"
+      }
+    ],
+    "badgeArt": {
+      "source": "Anniversary_1–5.png (actually JPEG; white backgrounds removed)",
+      "mimeType": "image/webp",
+      "sizePx": 280,
+      "sixPlus": "Year-5 badge with the numeral removed; the live year number is drawn on top in matching blue"
+    },
+    "primaryColor": "#0B2A8F",
+    "secondaryColor": "#1E6FD9",
+    "accentColors": null
+  },
+  "content": {
+    "primaryMetric": { "label": "Years with Ultium Cells", "hero": "Milestone badge for years of service" },
+    "secondaryMetrics": [],
+    "statusStates": [
+      { "state": "today",   "trigger": "Today is the hire-date anniversary (1+ years)", "label": "Today",       "display": "Blue banner takeover, confetti burst (3 cycles), pulse dot" },
+      { "state": "week",    "trigger": "Next anniversary in 1–7 days",                  "label": "This week",   "display": "Upcoming milestone badge with date and countdown" },
+      { "state": "month",   "trigger": "Next anniversary in 8–30 days",                 "label": "This month",  "display": "Upcoming milestone badge with date and countdown" },
+      { "state": "regular", "trigger": "Any other day, 1+ years of service",           "label": null,          "display": "Current milestone badge" },
+      { "state": "welcome", "trigger": "Under 1 year of service and not within 30 days of the first anniversary", "label": null, "display": "Welcome message with first-anniversary date" }
+    ],
+    "timeWindows": null,
+    "tone": "Friendly, celebratory"
+  },
+  "data": {
+    "primaryParam": "employeeId",
+    "exampleValue": "5591",
+    "previewUrl": "?employeeId=5591&hireDate=2023-10-06",
+    "workjamVariablesUsed": ["employeeId", "username", "language", "aspectRatio"],
+    "workjamVariablesRead": ["externalLocationId", "externalLocationCode", "address", "city", "stateOrProvince", "country", "zipCode", "externalRegionId", "externalRegionCode", "employeeId", "employeeCode", "username", "language", "aspectRatio"],
+    "customVariables": [
+      {
+        "name": "hireDate",
+        "type": "ISO timestamp (date part used; M/D/YYYY also accepted)",
+        "fallback": "Deterministic FNV-1a hash of employeeId → stable date between Aug 2019 and Mar 2026",
+        "displayRule": "Drives years of service, badge, state and countdown; never shown on its own"
+      },
+      {
+        "name": "previewDate",
+        "type": "ISO timestamp",
+        "fallback": "Device's current date",
+        "displayRule": "Mockup only: simulates 'today' to demo each state. Do not set in production"
+      }
+    ],
+    "dataSource": "Static fallback only (mockup). HRIS hire-date feed to be wired later",
+    "refreshMs": 1000
+  },
+  "display": {
+    "defaultAspectRatio": "standard",
+    "supportedAspectRatios": ["standard", "square", "landscape", "portrait"],
+    "sizing": "Frame fills available width up to 520px and shrinks to fit available height; all type and art scale with the frame (container query units)",
+    "renderingContext": "Phone tile"
+  },
+  "version": "1.0.0",
+  "builtOn": "2026-10-06"
+}
